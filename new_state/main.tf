@@ -13,7 +13,9 @@ variable "region" {
 }
 
 provider "aws" {
-  region = var.region
+  region     = var.region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }
 
 data "aws_ami" "ubuntu" {
@@ -64,5 +66,5 @@ output "public_ip" {
 }
 
 output "security_group" {
-  value = data.terraform_remote_state.root.outputs.security_group 
+  value = data.terraform_remote_state.root.outputs.security_group
 }
